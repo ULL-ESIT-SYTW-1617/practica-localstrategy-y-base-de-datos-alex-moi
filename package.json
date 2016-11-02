@@ -1,0 +1,61 @@
+{
+  "name": "gitbook-start-alex-moi-nitesh",
+  "version": "1.2.7",
+  "description": "Module to build a book on GitBook",
+  "main": "bin/gitbook-start-alex-moi-nitesh.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ULL-ESIT-SYTW-1617/creacion-de-paquetes-y-modulos-en-nodejs-alex-moi.git",
+    "wiki": "https://github.com/ULL-ESIT-SYTW-1617/creacion-de-paquetes-y-modulos-en-nodejs-alex-moi.wiki.git"
+  },
+  "keywords": [
+    "gitbook",
+    "npm package"
+  ],
+  "author": "Moises Yanes Carballo <alu0100782851@ull.edu.es> (http://alu0100782851.github.io/)",
+  "contributors": [
+    {
+      "name": "Alexander Cole Mora",
+      "email": "alu0100767421@ull.edu.es",
+      "url": "http://alu0100767421.github.io/"
+    },
+    {
+      "name": "Nitesh Gul Ramnani",
+      "email": "alu0100814651@ull.edu.es",
+      "url": "http://alu0100814651.github.io/blog/"
+    }
+  ],
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ULL-ESIT-SYTW-1617/creacion-de-paquetes-y-modulos-en-nodejs-alex-moi/issues"
+  },
+  "bin": {
+    "gitbook-start-alex-moi-nitesh": "./bin/gitbook-start-alex-moi-nitesh.js"
+  },
+  "homepage": "https://github.com/ULL-ESIT-SYTW-1617/creacion-de-paquetes-y-modulos-en-nodejs-alex-moi#readme",
+  "dependencies": {
+    "ejs": "^2.5.2",
+    "fs": "0.0.1-security",
+    "fs-extended": "^0.2.1",
+    "fs-extra": "^0.30.0",
+    "gh-pages": "^0.11.0",
+    "gitbook-cli": "^2.3.0",
+    "gulp": "^3.9.1",
+    "gulp-shell": "^0.5.2",
+    "minimist": "^1.2.0",
+    "simple-git": "^1.51.0"
+  },
+  "devDependencies": {
+    "child-process": "^1.0.2",
+    "child_process": "^1.0.2",
+    "express": "^4.14.0",
+    "gitbook-cli": "^2.3.0",
+    "gulp-git": "^1.12.0",
+    "gulp-shell": "^0.5.2",
+    "ssh-exec": "^2.0.0"
+  }
+}
