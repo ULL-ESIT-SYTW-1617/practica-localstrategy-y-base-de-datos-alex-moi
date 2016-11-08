@@ -3,7 +3,6 @@
 var modulo_repo = require("./create_repo")
 var fs = require('fs');
 var path = require('path');
-var child = require("child_process");
 var simplegit = require("simple-git")(path.join(process.cwd())); //revisar esta ruta luego por si da problemas
 
     /*
@@ -15,7 +14,7 @@ var simplegit = require("simple-git")(path.join(process.cwd())); //revisar esta 
     */
 
 
-//modulo_repo.pedirdatos();
+modulo_repo.pedirdatos();
 
 
 function initialize(directorio) {
