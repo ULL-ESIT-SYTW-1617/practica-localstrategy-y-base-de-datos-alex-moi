@@ -1,16 +1,16 @@
 {
-  "name": "gitbook-start-github-alex-moi",
-  "version": "0.0.1",
+  "name": "gitbook-start-alex-moi-nitesh",
+  "version": "1.2.6",
   "description": "Module to build a book on GitBook",
-  "main": "bin/gitbook-start-github.js",
+  "main": "bin/gitbook-start-alex-moi-nitesh.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server.js"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/ULL-ESIT-SYTW-1617/crear-repositorio-en-github-alex-moi.git",
-    "wiki": "https://github.com/ULL-ESIT-SYTW-1617/crear-repositorio-en-github-alex-moi.wiki.git"
+    "url": "https://github.com/ULL-ESIT-SYTW-1617/creacion-de-paquetes-y-modulos-en-nodejs-alex-moi.git",
+    "wiki": "https://github.com/ULL-ESIT-SYTW-1617/creacion-de-paquetes-y-modulos-en-nodejs-alex-moi.wiki.git"
   },
   "keywords": [
     "gitbook",
@@ -22,20 +22,25 @@
       "name": "Alexander Cole Mora",
       "email": "alu0100767421@ull.edu.es",
       "url": "http://alu0100767421.github.io/"
+    },
+    {
+      "name": "Nitesh Gul Ramnani",
+      "email": "alu0100814651@ull.edu.es",
+      "url": "http://alu0100814651.github.io/blog/"
     }
   ],
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/ULL-ESIT-SYTW-1617/crear-repositorio-en-github-alex-moi/issues"
+    "url": "https://github.com/ULL-ESIT-SYTW-1617/creacion-de-paquetes-y-modulos-en-nodejs-alex-moi/issues"
   },
   "bin": {
-    "gitbook-start-alex-moi-nitesh": "./bin/gitbook-start-github.js"
+    "gitbook-start-alex-moi-nitesh": "./bin/gitbook-start-alex-moi-nitesh.js"
   },
-  "homepage": "https://github.com/ULL-ESIT-SYTW-1617/crear-repositorio-en-github-alex-moi#readme",
+  "homepage": "https://github.com/ULL-ESIT-SYTW-1617/creacion-de-paquetes-y-modulos-en-nodejs-alex-moi#readme",
   "dependencies": {
-    "octonode": "^0.7.6",
-    "prompt": "^1.0.0",
-    "simple-git": "^1.61.0"
+    "ejs": "^2.5.2",
+    "fs-extended": "^0.2.1",
+    "minimist": "^1.2.0"
   },
   "devDependencies": {}
 }
