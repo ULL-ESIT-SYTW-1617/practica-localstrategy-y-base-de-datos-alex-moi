@@ -52,7 +52,7 @@ function crear_estructura(dir){
       	if (err)
           console.error(err)
     	});
-     
+
       //copiamos gulpfile
       fs.copyFile(path.join(__dirname,'..','gulpfile.js'), path.join(process.cwd(), dir , 'gulpfile.js'),function(err){
         if(err)
@@ -155,34 +155,46 @@ else{
         });
   }
 
-  //OPCION 2: deploy iaas
-  else if(deploy && deploy == 'iaas-ull-es'){
+  
+  if(deploy) 
+  {  
+    //OPCION 2: deploy iaas
+    if(deploy == 'iaas-ull-es'){
 
-    if(ip_iaas && path_iaas){ 
-          desplegar(nombre_dir, 'iaas-ull-es')               
+      if(ip_iaas && path_iaas){ 
+            desplegar(nombre_dir, 'iaas-ull-es')               
+      }
+      else
+            console.log("Especifique la ip y el path del iaas")
     }
-    else
-          console.log("Especifique la ip y el path del iaas")
-  }
     
-  //OPCION 3: deploy heroku
-  else if(deploy && deploy == 'heroku'){
-          desplegar(nombre_dir, 'heroku')              
-  }
-  
-  
-  //OPCION 4: deploy en iaas y en heroku
-  else if(deploy[0] == 'iaas-ull-es' && deploy[1] == 'heroku' || deploy[0] == 'heroku' && deploy[1] == 'iaas-ull-es'){
-    if(ip_iaas && path_iaas){ 
-          desplegar(nombre_dir, 'iaas-ull-es')
-          desplegar(nombre_dir, 'heroku')
+    //OPCION 3: deploy heroku
+    else if(deploy == 'heroku'){
+            desplegar(nombre_dir, 'heroku')              
     }
-    else
-          console.log("Especifique la ip y el path del iaas")
+    
+    //OPCION 3: deploy heroku
+    else if(deploy == 'heroku-token'){
+            desplegar(nombre_dir, 'heroku-token')              
+    }
+    
+    //OPCION 4: deploy github
+    else if(deploy == 'github'){
+            desplegar(nombre_dir, 'github')              
+    }
+    
+    //OPCION 5: deploy en iaas y en heroku
+    else if(deploy[0] == 'iaas-ull-es' && deploy[1] == 'heroku' || deploy[0] == 'heroku' && deploy[1] == 'iaas-ull-es'){
+      if(ip_iaas && path_iaas){ 
+            desplegar(nombre_dir, 'iaas-ull-es')
+            desplegar(nombre_dir, 'heroku')
+      }
+      else
+            console.log("Especifique la ip y el path del iaas")
+    }
   }
-  
-  else
-          console.log("Especifique al menos el nombre del directorio");
+  /*else
+          console.log("Especifique al menos el nombre del directorio");*/
   
 
 }
