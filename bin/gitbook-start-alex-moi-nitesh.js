@@ -22,6 +22,7 @@ var path_iaas   = argv.iaas_path  || '';
 
 
 function crear_estructura(dir){
+      console.log("\n============ CREANDO ESTRUCTURA GITBOOK ============")
       
       //creamos el directorio raiz
       fs.createDir(path.join(process.cwd(), dir), function(err){
@@ -97,6 +98,8 @@ function crear_estructura(dir){
                 }
             });
       });
+      
+      console.log("Estructura de directorios creada!")
 }
 
 
