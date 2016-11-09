@@ -5,9 +5,10 @@ var fs = require('fs-extended');
 var ejs = require("ejs");
 var path = require("path");
 var child = require("child_process");
+var gitconfig = require('git-config');
 
-
-var author      = argv.a || '';
+//Variables para el package.json
+var author, email;
 var name        = argv.n || '';
 var repo_url    = argv.u || '';
 var directorio  = argv.c;
@@ -18,7 +19,6 @@ var help        = argv.h;
 var deploy      = argv.d;
 var ip_iaas     = argv.iaas_ip    || '';
 var path_iaas   = argv.iaas_path  || '';
-
 
 
 function crear_estructura(dir){
@@ -76,6 +76,27 @@ function crear_estructura(dir){
         if(err)
           console.log(err);
       });
+      
+      
+      //Coger usuario y email de git
+      gitconfig(function(err,config){
+          if(err) console.log(err);
+          
+          author  = config.user.name  || argv.n;
+          email   = config.user.email || '';
+
+          
+          //renderizando package.json
+          ejs.renderFile(path.join(__dirname,'..','template','package.ejs'),{ autor: author, autore: email, nombre: name, repourl: repo_url, ip_iaas_ull: ip_iaas , path_iaas_ull: path_iaas}, 
+            function(err,data){
+                if(err) {
+                    console.error(err);
+                }
+                if(data) {
+                    fs.writeFile(path.join(process.cwd(),nombre_dir,'package.json'), data);
+                }
+            });
+      });
 }
 
 
@@ -103,7 +124,7 @@ function desplegar(nombre_dir, paquete){
       servicio.initialize(nombre_dir);
           
           
-      //renderizando package.json
+      /*//renderizando package.json
       ejs.renderFile(path.join(__dirname,'..','template','package.ejs'),{ autor: author , nombre: name, repourl: repo_url, ip_iaas_ull: ip_iaas , path_iaas_ull: path_iaas}, 
         function(err,data){
             if(err) {
@@ -112,7 +133,7 @@ function desplegar(nombre_dir, paquete){
             if(data) {
                 fs.writeFile(path.join(process.cwd(),nombre_dir,'package.json'), data);
             }
-        });
+        });*/
 }
 
 
@@ -139,62 +160,74 @@ else{
   
   
   //OPCION 1: Crear estructura para gitbook
-  if(directorio && !deploy){ //Si se especifica la opcion -c y las -a, -n, -u como opcionales. Este caso NO incluye la opcion deploy-iaas
-      
+  if(directorio && !deploy){
       crear_estructura(nombre_dir);
-      
-      //renderizando package.json
-      ejs.renderFile(path.join(__dirname,'..','template','package.ejs'),{ autor: author , nombre: name, repourl: repo_url, ip_iaas_ull: ip_iaas , path_iaas_ull: path_iaas}, 
-        function(err,data){
-            if(err) {
-                console.error(err);
-            }
-            if(data) {
-                fs.writeFile(path.join(process.cwd(),nombre_dir,'package.json'), data);
-            }
-        });
   }
 
-  
   if(deploy) 
   {  
-    //OPCION 2: deploy iaas
-    if(deploy == 'iaas-ull-es'){
+    
+    if( Array.isArray( deploy ) == false)
+    {
+      
+      switch (deploy) {
+        case 'iaas-ull-es':
+            if(ip_iaas && path_iaas){ 
+                desplegar(nombre_dir, 'iaas-ull-es')               
+            }
+            else
+                  console.log("Especifique la ip y el path del iaas")
+            break;
+            
+        case 'heroku':
+            desplegar(nombre_dir, 'heroku')  
+            break;
+            
+        case 'heroku-token':
+            desplegar(nombre_dir, 'heroku-token')   
+            break;
+            
+        case 'github':
+            desplegar(nombre_dir, 'github') 
+            break;
+            
+        default:
+          console.log("La opcion " + deploy + " no es valida");
+      }
+    }
+    
+    else if( Array.isArray( deploy ) == true)
+    {
+        //OPCION 5: deploy en mas de un servicio
+        var leng = deploy.length
 
-      if(ip_iaas && path_iaas){ 
-            desplegar(nombre_dir, 'iaas-ull-es')               
-      }
-      else
-            console.log("Especifique la ip y el path del iaas")
-    }
-    
-    //OPCION 3: deploy heroku
-    else if(deploy == 'heroku'){
-            desplegar(nombre_dir, 'heroku')              
-    }
-    
-    //OPCION 3: deploy heroku
-    else if(deploy == 'heroku-token'){
-            desplegar(nombre_dir, 'heroku-token')              
-    }
-    
-    //OPCION 4: deploy github
-    else if(deploy == 'github'){
-            desplegar(nombre_dir, 'github')              
-    }
-    
-    //OPCION 5: deploy en iaas y en heroku
-    else if(deploy[0] == 'iaas-ull-es' && deploy[1] == 'heroku' || deploy[0] == 'heroku' && deploy[1] == 'iaas-ull-es'){
-      if(ip_iaas && path_iaas){ 
-            desplegar(nombre_dir, 'iaas-ull-es')
-            desplegar(nombre_dir, 'heroku')
-      }
-      else
-            console.log("Especifique la ip y el path del iaas")
+        if(leng >1){
+          
+          //Comprobar que los valores del array son los correctos
+          var valido=true;
+          for (var i=0; i<leng;i++){
+            if(deploy[i]!='iaas-ull-es' && deploy[i]!='heroku' && deploy[i]!='github' ){
+                    console.log("Al menos uno de los argumentos pasados es incorrecto revise la documentacion")
+                    valido=false;
+            }
+          }
+          
+          //Desplegar si se han introducido diferentes despliegues
+          var array=[]
+          if(valido == true)
+            for (var i = 0; i < leng; i++) {
+                if( !(deploy[i] in array ) ){
+                    array.push(deploy[i])
+                    array[deploy[i]]++;
+                    desplegar(nombre_dir, deploy[i])
+                }
+                else
+                {
+                    console.log("Error se han introducido despliegues repetidos")
+                }
+            }
+        }
     }
   }
-  /*else
-          console.log("Especifique al menos el nombre del directorio");*/
   
-
 }
