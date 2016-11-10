@@ -118,7 +118,7 @@ function crear_estructura(dir){
 
 function desplegar(nombre_dir, paquete){
       /*crear_estructura(nombre_dir);*/
-      
+      /*
       if(ip_iaas){
         var paque = require(path.resolve(process.cwd(),"package.json"));
         paque.iaas.IP=ip_iaas;
@@ -128,8 +128,7 @@ function desplegar(nombre_dir, paquete){
       if(path_iaas){
         var paque = require(path.resolve(process.cwd(),"package.json"));
         paque.iaas.PATH=path_iaas;
-      }
-      
+      }*/
       
       child.exec('npm install -g gitbook-start-'+paquete+'-alex-moi', function(error, stdout, stderr){
         if(error)
