@@ -1,6 +1,6 @@
 {
   "name": "gitbook-start-alex-moi-nitesh",
-  "version": "1.2.32",
+  "version": "1.2.36",
   "description": "Module to build a book on GitBook",
   "main": "bin/gitbook-start-alex-moi-nitesh.js",
   "scripts": {
@@ -50,6 +50,7 @@
     "gulp-shell": "^0.5.2",
     "minimist": "^1.2.0",
     "path": "^0.12.7",
+    "prompt": "^1.0.0",
     "simple-git": "^1.51.0",
     "ssh-exec": "^2.0.0"
   }
