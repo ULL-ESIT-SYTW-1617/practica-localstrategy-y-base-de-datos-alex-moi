@@ -73,11 +73,23 @@ function crear_estructura(dir){
         console.log(err);
       }); 
       
-     /* //copiamos .gitignore
+     //copiamos .gitignore
       fs.copyFileSync(path.join(__dirname,'..','template','.npmignore'), path.join(process.cwd(), dir , '.gitignore'),function(err){
         if(err)
           console.log(err);
-      });*/
+      });
+      
+      //copiamos .env
+      fs.copyFileSync(path.join(__dirname,'..','template','.env'), path.join(process.cwd(), dir , '.env'),function(err){
+        if(err)
+          console.log(err);
+      });
+      
+      //copiamos procfile
+      fs.copyFileSync(path.join(__dirname,'..','template','Procfile'), path.join(process.cwd(), dir , 'Procfile'),function(err){
+        if(err)
+          console.log(err);
+      });
       
       
       //Coger usuario y email de git
