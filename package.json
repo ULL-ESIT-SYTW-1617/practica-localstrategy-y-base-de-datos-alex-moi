@@ -37,6 +37,7 @@
   "homepage": "https://github.com/ULL-ESIT-SYTW-1617/autenticacion-oauth-con-passport-alex-moi.git#readme",
   "dependencies": {
     "ejs": "^2.5.2",
+    "express": "^4.14.0",
     "fs": "0.0.1-security",
     "fs-extended": "^0.2.1",
     "fs-extra": "^0.30.0",

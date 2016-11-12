@@ -4,7 +4,7 @@
 var fs = require('fs');
 var path = require('path');
 var child = require("child_process");
-var exec = require('child_process').exec;
+var fs2 = require('fs-extended');
 var prompt = require("prompt");
 var heroku = require('heroku-client');
 
@@ -24,6 +24,13 @@ function initialize(directorio) {
         
         '\n\n\ heroku.deploy();'+
         '\n});\n\n';
+
+
+    //Copia el server.js
+    fs2.copyFile(path.join(process.cwd(),'node_modules','gitbook-start-heroku-token-oauth-alex-moi','server.js'),path.join(process.cwd(), 'server.js'),function(err){
+        if(err)
+        console.log(err);
+     });
 
     
     //añadimos la tarea
