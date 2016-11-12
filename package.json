@@ -46,6 +46,7 @@
     "gulp": "^3.9.1",
     "gulp-shell": "^0.5.2",
     "heroku-client": "^3.0.0-beta3",
+    "materialize-css": "^0.97.8",
     "minimist": "^1.2.0",
     "path": "^0.12.7",
     "prompt": "^1.0.0",
