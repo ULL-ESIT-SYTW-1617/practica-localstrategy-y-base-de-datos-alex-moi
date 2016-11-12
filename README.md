@@ -1,99 +1,48 @@
-# Sistemas y Tecnologías Web. Crear repositorio en github
 
-## Introducción
+# Sistemas y Tecnologías Web. Gitbook Start Heroku. Plugins
 
-El objetivo de esta práctica es extender el package NodeJS publicado en npm en una práctica anterior con una nueva funcionalidad que permita que los usuarios con conocimientos de NodeJS puedan extender la conducta del ejecutable para que este cree un repositorio en **GitHub**.
+Este paquete es un plugin del paquete ```gitbook-start-alex-moi-nitesh```.
+Ofrece la posibilidad de desplegar en **heroku** nuestra aplicación a través de la **API de Heroku**.
 
-Para ello, el plugin utilizado se puede encontrar en [gitbook-start-github-alex-moi](https://www.npmjs.com/package/gitbook-start-github-alex-moi).
+## Instalación
 
-##Instalación
-
+**Debemos tener** instalado el paquete principal en **global**. Con esto hecho no es necesario instalar el paquete plugin heroku puesto que al ejecutar la aplicación de la forma que se expone a continuación, ésta lo instala por nosotros.
+Por tanto, ejecutamos desde el directorio de nuestro gitbook:
 ```shell
-npm install -g gitbook-start-alex-moi-nitesh
+gitbook-start-alex-moi-nitesh -d heroku-token
 ```
 
-##Tutorial para su ejecución
+Para más información sobre las opciones que permite el paquete principal, acuda a su documentación en [gitbook-start-alex-moi-nitesh](https://github.com/ULL-ESIT-SYTW-1617/nueva-funcionalidad-para-el-paquete-npm-plugins-alex-moi).
+## Descripción del paquete
 
-Para ejecutar, ponemos el siguiente comando:
-
-`gitbook-start-alex-moi-nitesh [opciones]`
-
-[opciones] serían:
-*    -a: Especificar el autor del gitbook
-*    -n: Especificar el nombre del gitbook
-*    -c: Especificar el nombre del directorio donde crear el gitbook
-*    -u: Especificar la url del repositorio git
-*    -h: Help (ayuda)
-*    -d: Realizar un deploy a (IaaS, Heroku o Github)
-
-**Nota:** Primero debe crearse la estructura de directorios del gitbook con el argumento '-c' y luego, situado dentro del gitbook, realizar un deploy con el argumento '-d'. Ambos argumentos **NO** pueden ser ejecutados conjuntamente.
-
-Para crear la estructura de directorios del Gitbook ejecutamos:
-```shell
-gitbook-start-alex-moi-nitesh -c Book
-```
-
-Una vez instalado y ejecutado, hacemos:
-
-```shell
-npm install
-gitbook install
-```
-
-Una vez completado los "ficheros.md" de nuestro GitBook, para construirlo y publicarlo en github (gh-pages) hacemos:
-
-```shell
-gulp build
-gulp deploy
-```
-
-Un ejemplo de la versión final del gitbook sería: [Ejemplo](https://alu0100782851.github.io/prueba/)
-
-##Funcionamiento del argumento "-d"
-
-Este argumento se corresponde con la opción del deploy en el iaas, heroku o github y **sólo** puede ejecutarse para cada caso como se especifica a continuación.
+El paquete cuenta con dos métodos, **intialize()** y **deploy()**. El primero, al ser invocado por el paquete principal [gitbook-start-alex-moi-nitesh](https://www.npmjs.com/package/gitbook-start-alex-moi-nitesh) añadirá una tarea gulp al gulpfile.js de la aplicación. Esta tarea se llamará **deploy-heroku-token** e invocará el método **deploy()** que se encargará de desplegar la aplicación en **heroku**.
 
 
-**IaaS**
- : Para hacer el despliegue en el IaaS es necesario proporcionar dos argumentos mas que deben ser especificados obligatoriamente, ademas de los restantes de los que dispone el paquete.
+## Funcionamiento
 
- Por tanto, se ejecutaría el siguiente comando desde el directorio que contiene nuestro gitbook:
-`gitbook-start-alex-moi-nitesh -d iaas-ull-es [Obligatorias]`
+Después de haber ejecutado el comando del paso de **Instalación**, se instalará el paquete gitbook-start-heroku-alex-moi automaticamente y ya podremos desplegar en heroku.
+Asegúrese que tiene un repositorio vacío creado y que lo ejecuta donde ha creado la estructura del Book. Ejemplo:
 
- [Obligatorias] serían:
- ```
---iaas_ip: Especificar la IP del IaaS
-			Ejemplo: 10.2.1.128
---iaas_path: Especificar la PATH de IaaS(sin '/' al final de la ruta)
-			Ejemplo: /home/nombre_usuario/ruta
- ```
-
-**Heroku**
- : Para hacer el despliegue en heroku bastará con especificar la opcion -d seguido de 'heroku'.
-
- Por tanto, se ejecutaría el siguiente comando desde el directorio que contiene nuestro gitbook:
-`gitbook-start-alex-moi-nitesh -d heroku`
- 
-
-**Github**
- : Para hacer el despliegue en Github bastará con especificar la opción -d seguido de 'github'.
-
- Por tanto, se ejecutaría el siguiente comando desde el directorio que contiene nuestro gitbook:
-`gitbook-start-alex-moi-nitesh -d github`
+`gitbook-start-alex-moi-nitesh -d heroku-token` 
 
 
-## Versiones de paquetes a descargar para esta practica
-* Paquete principal: **v1.2.50**
-* Paquete IAAS: **v1.2.12**
-* Paquete Heroku-token: **v0.1.26**
-* Paquete github: **v0.1.8**
+El paquete nos pedirá un nombre para nuestra app, nuestro token de la api de heroku y un repositorio github(en formato http y que esté vacío). El token lo puede encontrar en su cuenta personal de heroku
+(Account->Baje hasta el final->Api Key)
+
+A continuación siga los siguientes pasos:
+	
+1. `npm install`
+2. `heroku git:remote -a <nombre_app>`
+3. `gulp build`
+4. `gulp deploy-heroku-token`
+5. Acuda a la url de la aplicación: `https://nombre_app.herokuapp.com/`
+
 
 ## Enlaces importantes
+
+*  [Página en NPM gitbook-start-heroku-token-alex-moi Plugin](https://www.npmjs.com/package/gitbook-start-heroku-token-alex-moi)
 *  [Página en NPM gitbook-start-alex-moi-nitesh](https://www.npmjs.com/package/gitbook-start-alex-moi-nitesh)
-*  [Página en NPM gitbook-start-iaas-ull-es-alex-moi Plugin](https://www.npmjs.com/package/gitbook-start-iaas-ull-es-alex-moi)
-* [Página en NPM gitbook-start-heroku-alex-moi Plugin](https://www.npmjs.com/package/gitbook-start-heroku-alex-moi)
-* [Página en NPM gitbook-start-github-alex-moi Plugin](https://www.npmjs.com/package/gitbook-start-github-alex-moi)
-*  [Repositorio GitHub](https://github.com/ULL-ESIT-SYTW-1617/crear-repositorio-en-github-alex-moi)
+*  [Repositorio GitHub](https://github.com/ULL-ESIT-SYTW-1617/gitbook-start-heroku-token-alex-moi.git)
 *  [Descripción de la práctica](https://casianorodriguezleon.gitbooks.io/ull-esit-1617/content/practicas/practicagithubapi.html)
 *  [Campus Virtual](https://campusvirtual.ull.es/1617/course/view.php?id=1175)
 
