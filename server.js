@@ -14,7 +14,7 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var session = require('express-session');
-
+var loginin = require('connect-ensure-login').ensureLoggedIn;
 
 var paque = require(path.resolve(process.cwd(),".token_heroku","token.json"));
 
@@ -76,11 +76,19 @@ function middlewareOrganization (req, res, next) {
 
 
 
-
-
 app.get('/', function(req, res) {
 	res.render('index.ejs');
 });
+app.get('/login', passport.authenticate('github'));
+
+app.get('/login/return',
+  passport.authenticate('github', { failureRedirect: '/login' }),
+  (req, res) => {
+    res.redirect('/book');
+  });
+
+
+app.get('*', loginin('/login'), middlewareOrganization,express.static('gh-pages'));
 
 // launch ======================================================================
 app.listen(port);
