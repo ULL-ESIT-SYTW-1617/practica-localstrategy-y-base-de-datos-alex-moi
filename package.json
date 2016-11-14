@@ -1,6 +1,6 @@
 {
   "name": "gitbook-start-heroku-token-oauth-alex-moi",
-  "version": "0.0.0",
+  "version": "0.0.7",
   "description": "Plugin deploy heroku oauth",
   "main": "gitbook-start-heroku-token-oauth.js",
   "scripts": {
@@ -36,8 +36,12 @@
   },
   "homepage": "https://github.com/ULL-ESIT-SYTW-1617/autenticacion-oauth-con-passport-alex-moi.git#readme",
   "dependencies": {
+    "body-parser": "^1.15.2",
+    "connect-ensure-login": "^0.1.1",
+    "cookie-parser": "^1.4.3",
     "ejs": "^2.5.2",
     "express": "^4.14.0",
+    "express-session": "^1.14.2",
     "fs": "0.0.1-security",
     "fs-extended": "^0.2.1",
     "fs-extra": "^0.30.0",
@@ -48,6 +52,10 @@
     "heroku-client": "^3.0.0-beta3",
     "materialize-css": "^0.97.8",
     "minimist": "^1.2.0",
+    "morgan": "^1.7.0",
+    "octonode": "^0.7.6",
+    "passport": "^0.3.2",
+    "passport-github": "^1.1.0",
     "path": "^0.12.7",
     "prompt": "^1.0.0",
     "simple-git": "^1.51.0"

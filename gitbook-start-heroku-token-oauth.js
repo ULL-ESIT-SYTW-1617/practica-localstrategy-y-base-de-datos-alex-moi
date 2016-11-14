@@ -18,8 +18,8 @@ function initialize(directorio) {
     console.log("\n============ INSTALANDO DEPENDENCIAS ============")
     console.log("\nEspere mientras el proceso termina ...")
 
-    var contenido='\ngulp.task("deploy-heroku-token", function () {'+ 
-        '\n\tvar heroku = require("gitbook-start-heroku-token-alex-moi");'+
+    var contenido='\ngulp.task("deploy-heroku-oauth", function () {'+ 
+        '\n\tvar heroku = require("gitbook-start-heroku-token-oauth-alex-moi");'+
         '\n\tvar url = paquete.repository.url;'+
         
         '\n\n\ heroku.deploy();'+
@@ -32,7 +32,16 @@ function initialize(directorio) {
         console.log(err);
      });
 
-    
+      fs.copyDir(path.join(process.cwd(),'node_modules','gitbook-start-heroku-token-oauth-alex-moi','views'),path.join(process.cwd(), 'views'),function(err){
+        if(err)
+        console.log(err);
+     });
+     
+     fs.copyDir(path.join(process.cwd(),'node_modules','gitbook-start-heroku-token-oauth-alex-moi','public'),path.join(process.cwd(), 'public'),function(err){
+        if(err)
+        console.log(err);
+     });
+     
     //añadimos la tarea
     fs.writeFileSync(path.resolve(process.cwd(),'gulpfile.js'), contenido,  {'flag':'a'},  function(err) {
         if (err) {
@@ -51,7 +60,7 @@ function initialize(directorio) {
 function datos(directorio){
      //pedimos por pantall el nombre de la app y el token
       var git = require('simple-git')(path.join(process.cwd()));
-      console.log("hfhfhfhfhf   " + path.join(process.cwd()));
+      //console.log("hfhfhfhfhf   " + path.join(process.cwd()));
        prompt.get([{
               name: 'nombre_app',
               required: true
