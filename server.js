@@ -13,13 +13,14 @@ var session = require('express-session');
 var loginin = require('connect-ensure-login').ensureLoggedIn;
 
 
-//var paque = require(path.resolve(process.cwd(),".token_heroku","token.json"));
+var apli = require(path.resolve(process.cwd(),"aplicacion.json"));
 
-var id_client= "";
-var secret_client= "";
-var organizacion = "";
-//var nombre_app = paque.Heroku.nombre_app;
-var nombre_app = "";
+var nombre_app = apli.Config.nombre_app ;
+var id_client= apli.Config.id_client;
+var secret_client= apli.Config.secret_client;
+var organizacion = apli.Config.organizacion;
+
+
 
 
 console.log(nombre_app);

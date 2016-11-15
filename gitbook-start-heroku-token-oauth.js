@@ -69,6 +69,17 @@ function datos(directorio){
               required: true
             },{
                 name: 'repositorio'
+            },{
+                name: 'id_client',
+                require: true
+            },{
+                name: 'secret_client',
+                require: true
+                
+            },{
+                name: 'organizacion',
+                require: true
+                
             }], function (err, result) {
             // 
             // Log the results. 
@@ -76,13 +87,19 @@ function datos(directorio){
             console.log('Sus datos son:');
             console.log('  nombre: ' + result.nombre_app);
             console.log('  token: ' + result.token_app);
-           console.log('  repositorio: ' + result.repositorio);
+            console.log('  repositorio: ' + result.repositorio);
+            console.log('  id_client: ' + result.id_client);
+            console.log('  secret_client: ' + result.secret_client);
+            console.log('  organizacion ' + result.organizacion);
            
             //variable con el contenido de config.json
             var json = '{\n "Heroku":{\n\t"nombre_app": "'+result.nombre_app+'",\n\t "token_app": "'+result.token_app+'"\n\t}\n}';
+            var configuracion = '{\n "Config":{\n\t"nombre_app": "'+result.nombre_app+'",\n\t "id_client": "'+result.id_client+'",\n\t "secret_client": "'+result.secret_client+'",\n\t "organizacion": "'+result.organizacion+'"\n\t}\n}';
+            
             
             fs.mkdirSync(path.join(process.cwd(), ".token_heroku"));
             fs.writeFileSync(path.join(process.cwd(),".token_heroku","token.json"),json);
+            fs.writeFileSync(path.join(process.cwd(),"aplicacion.json"),configuracion);
             
             var token = require(path.join(process.cwd(), ".token_heroku","token.json"));
             var pack= require(path.join(process.cwd(), 'package.json'));
