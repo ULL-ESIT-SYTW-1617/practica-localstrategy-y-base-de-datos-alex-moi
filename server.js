@@ -12,14 +12,16 @@ var bodyParser = require('body-parser');
 var session = require('express-session');
 var loginin = require('connect-ensure-login').ensureLoggedIn;
 
+
 //var paque = require(path.resolve(process.cwd(),".token_heroku","token.json"));
 
-var id_client= "aqui va su id cliente";
-var secret_client= "aqui va su cliente secreto";
-var organizacion = "aqui va su organizacion";
-
+var id_client= "";
+var secret_client= "";
+var organizacion = "";
 //var nombre_app = paque.Heroku.nombre_app;
-var nombre_app = "aquielnombredelaapp";
+var nombre_app = "";
+
+
 console.log(nombre_app);
 passport.use(new passgithub({
     clientID: id_client,
@@ -59,19 +61,28 @@ app.use(session({ secret: 'keyboard cat', resave: true, saveUninitialized: true 
 app.use(passport.initialize());
 app.use(passport.session());
 
-function Organizacion (req, res, next) {
-  var cliente = github.client({id: id_client, secret: secret_client})
 
-  cliente.get(`/users/${req.user.username}/orgs`, {}, function (err, status, body, headers) {
-    for(var org of body) {
-      console.log(org.login)
-      if (org.login === organizacion) {
-        return next()
-      }
+
+
+
+function Organizacion (req, res, next) {
+  var client = github.client({id: id_client, secret: secret_client});
+  client.get(`/users/${req.user.username}/orgs`, {}, function (err, status, body, headers) {
+   
+    for(var j=0; j<body.length ; j++){
+      //res.send(body[0].login);
+      if(body[j].login === organizacion)
+        return next();
     }
+  
     res.render('error', {error: 'No dispones de permisos para leer el book'})
   });
 }
+
+
+
+
+
 
 
 app.get('/login', (req, res) => {
@@ -88,9 +99,9 @@ app.get('/respuesta',
     res.redirect('/');
   });
 
-app.get('/assets/*',express.static('assets'))
-app.get('*', loginin('/login'),Organizacion,express.static('gh-pages'));
-app.use((req, res) => res.render('error', {error: 'No te olvides de publicar el libro!!!!'}))
+app.get('/assets/*',express.static('assets'));
+app.get('*', loginin('/login'), Organizacion ,express.static('gh-pages'));
+app.use((req, res) => res.render('error', {error: 'No te olvides de publicar el libro!!!!'}));
 
 // launch ======================================================================
 app.listen(port);
