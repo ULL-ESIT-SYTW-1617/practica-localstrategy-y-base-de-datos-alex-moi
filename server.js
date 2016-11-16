@@ -81,9 +81,9 @@ function Organizacion (req, res, next) {
 }
 
 
-
-
-
+app.get('/invitado', (req, res) => {
+  res.render('index')
+})
 
 
 app.get('/login', (req, res) => {
