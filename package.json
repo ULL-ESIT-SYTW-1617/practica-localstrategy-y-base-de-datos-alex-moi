@@ -1,6 +1,6 @@
 {
   "name": "gitbook-start-heroku-token-oauth-alex-moi",
-  "version": "0.0.10",
+  "version": "0.0.11",
   "description": "Plugin deploy heroku oauth",
   "main": "gitbook-start-heroku-token-oauth.js",
   "scripts": {

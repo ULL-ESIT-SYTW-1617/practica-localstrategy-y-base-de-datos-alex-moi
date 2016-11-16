@@ -49,7 +49,6 @@ passport.deserializeUser(function(obj, done) {
 
 app.set('view engine', 'ejs'); 
 app.use(express.static(__dirname + '/public'));
-//app.use(express.static(__dirname + '/gh-pages'));
 
 
 app.use(logger('combined'));
@@ -61,9 +60,6 @@ app.use(session({ secret: 'keyboard cat', resave: true, saveUninitialized: true 
 // session.
 app.use(passport.initialize());
 app.use(passport.session());
-
-
-
 
 
 function Organizacion (req, res, next) {
@@ -81,17 +77,16 @@ function Organizacion (req, res, next) {
 }
 
 
-app.get('/invitado', (req, res) => {
-  res.render('index')
-})
 
-
-app.get('/login', (req, res) => {
+app.get('/login',  (req, res) => {
   if (req.isAuthenticated()) return res.redirect('/')
-  res.render('index')
+  res.render('login')
 })
+
+
 
 app.get('/github', passport.authenticate('github'));
+
 
 
 app.get('/respuesta',
@@ -100,13 +95,19 @@ app.get('/respuesta',
     res.redirect('/');
   });
 
+
+app.get('/invitado', (req, res) => {
+  app.get('/gh-pages',express.static('gh-pages'))
+  res.sendFile(path.join(__dirname, 'gh-pages', 'index.html'));
+})
+
+
 app.get('/assets/*',express.static('assets'));
 app.get('*', loginin('/login'), Organizacion ,express.static('gh-pages'));
 app.use((req, res) => res.render('error', {error: 'No te olvides de publicar el libro!!!!'}));
+
 
 // launch ======================================================================
 app.listen(port);
 
 console.log('The magic happens on port localhost:' + port);
-
-
