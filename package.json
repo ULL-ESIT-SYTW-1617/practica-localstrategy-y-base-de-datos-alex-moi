@@ -1,15 +1,15 @@
 {
-  "name": "gitbook-start-heroku-token-oauth-alex-moi",
-  "version": "0.0.11",
+  "name": "gitbook-start-heroku-localstrategy-alex-moi",
+  "version": "0.0.1",
   "description": "Plugin deploy heroku oauth",
-  "main": "gitbook-start-heroku-token-oauth.js",
+  "main": "gitbook-start-heroku-localstrategy-alex-moi.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/ULL-ESIT-SYTW-1617/autenticacion-oauth-con-passport-alex-moi.git",
-    "wiki": "https://github.com/ULL-ESIT-SYTW-1617/autenticacion-oauth-con-passport-alex-moi.wiki.git"
+    "url": "https://github.com/ULL-ESIT-SYTW-1617/passport-y-localstrategy-alex-moi.git",
+    "wiki": "https://github.com/ULL-ESIT-SYTW-1617/passport-y-localstrategy-alex-moi.wiki.git"
   },
   "keywords": [
     "gitbook",
@@ -32,9 +32,9 @@
     "url": "https://github.com/ULL-ESIT-SYTW-1617/autenticacion-oauth-con-passport-alex-moi.git/issues"
   },
   "bin": {
-    "gitbook-start-heroku-token-oauth": "./gitbook-start-heroku-token-oauth.js"
+    "gitbook-start-heroku-localstrategy-alex-moi": "./gitbook-start-heroku-localstrategy-alex-moi.js"
   },
-  "homepage": "https://github.com/ULL-ESIT-SYTW-1617/autenticacion-oauth-con-passport-alex-moi.git#readme",
+  "homepage": "https://github.com/ULL-ESIT-SYTW-1617/passport-y-localstrategy-alex-moi.git#readme",
   "dependencies": {
     "body-parser": "^1.15.2",
     "connect-ensure-login": "^0.1.1",
