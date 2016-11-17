@@ -1,6 +1,6 @@
 {
   "name": "gitbook-start-heroku-localstrategy-alex-moi",
-  "version": "0.0.1",
+  "version": "0.0.3",
   "description": "Plugin deploy heroku oauth",
   "main": "gitbook-start-heroku-localstrategy.js",
   "scripts": {
@@ -32,7 +32,7 @@
     "url": "https://github.com/ULL-ESIT-SYTW-1617/autenticacion-oauth-con-passport-alex-moi.git/issues"
   },
   "bin": {
-    "gitbook-start-heroku-localstrategy": "./gitbook-start-heroku-localstrategy-alex-moi.js"
+    "gitbook-start-heroku-localstrategy": "./gitbook-start-heroku-localstrategy.js"
   },
   "homepage": "https://github.com/ULL-ESIT-SYTW-1617/passport-y-localstrategy-alex-moi.git#readme",
   "dependencies": {

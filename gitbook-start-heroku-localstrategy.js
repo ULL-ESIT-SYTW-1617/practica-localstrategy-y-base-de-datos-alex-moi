@@ -18,8 +18,8 @@ function initialize(directorio) {
     console.log("\n============ INSTALANDO DEPENDENCIAS ============")
     console.log("\nEspere mientras el proceso termina ...")
 
-    var contenido='\ngulp.task("deploy-heroku-oauth", function () {'+ 
-        '\n\tvar heroku = require("gitbook-start-heroku-token-oauth-alex-moi");'+
+    var contenido='\ngulp.task("deploy-heroku-local", function () {'+ 
+        '\n\tvar heroku = require("gitbook-start-heroku-localstrategy-alex-moi");'+
         '\n\tvar url = paquete.repository.url;'+
         
         '\n\n\ heroku.deploy();'+
@@ -27,17 +27,17 @@ function initialize(directorio) {
 
 
     //Copia el server.js
-    fs2.copyFile(path.join(process.cwd(),'node_modules','gitbook-start-heroku-token-oauth-alex-moi','server.js'),path.join(process.cwd(), 'server.js'),function(err){
+    fs2.copyFile(path.join(process.cwd(),'node_modules','gitbook-start-heroku-localstrategy-alex-moi','server.js'),path.join(process.cwd(), 'server.js'),function(err){
         if(err)
         console.log(err);
      });
 
-      fs.copyDir(path.join(process.cwd(),'node_modules','gitbook-start-heroku-token-oauth-alex-moi','views'),path.join(process.cwd(), 'views'),function(err){
+      fs.copyDir(path.join(process.cwd(),'node_modules','gitbook-start-heroku-localstrategy-alex-moi','views'),path.join(process.cwd(), 'views'),function(err){
         if(err)
         console.log(err);
      });
      
-     fs.copyDir(path.join(process.cwd(),'node_modules','gitbook-start-heroku-token-oauth-alex-moi','public'),path.join(process.cwd(), 'public'),function(err){
+     fs.copyDir(path.join(process.cwd(),'node_modules','gitbook-start-heroku-localstrategy-alex-moi','public'),path.join(process.cwd(), 'public'),function(err){
         if(err)
         console.log(err);
      });
@@ -70,14 +70,10 @@ function datos(directorio){
             },{
                 name: 'repositorio'
             },{
-                name: 'id_client',
+                name: 'usuario',
                 require: true
             },{
-                name: 'secret_client',
-                require: true
-                
-            },{
-                name: 'organizacion',
+                name: 'password',
                 require: true
                 
             }], function (err, result) {
@@ -88,13 +84,12 @@ function datos(directorio){
             console.log('  nombre: ' + result.nombre_app);
             console.log('  token: ' + result.token_app);
             console.log('  repositorio: ' + result.repositorio);
-            console.log('  id_client: ' + result.id_client);
-            console.log('  secret_client: ' + result.secret_client);
-            console.log('  organizacion ' + result.organizacion);
+            console.log('  usuario: ' + result.usuario);
+            console.log('  password: ' + result.password);
            
             //variable con el contenido de config.json
             var json = '{\n "Heroku":{\n\t"nombre_app": "'+result.nombre_app+'",\n\t "token_app": "'+result.token_app+'"\n\t}\n}';
-            var configuracion = '{\n "Config":{\n\t"nombre_app": "'+result.nombre_app+'",\n\t "id_client": "'+result.id_client+'",\n\t "secret_client": "'+result.secret_client+'",\n\t "organizacion": "'+result.organizacion+'"\n\t}\n}';
+            var configuracion = '{\n "Config":{\n\t"usuario": "'+result.usuario+'",\n\t "password": "'+result.password+'"\n\t}\n}';
             
             
             fs.mkdirSync(path.join(process.cwd(), ".token_heroku"));
