@@ -89,8 +89,17 @@ function datos(directorio){
            
             //variable con el contenido de config.json
             var json = '{\n "Heroku":{\n\t"nombre_app": "'+result.nombre_app+'",\n\t "token_app": "'+result.token_app+'"\n\t}\n}';
-            var configuracion = '{\n "Config":{\n\t"usuario": "'+result.usuario+'",\n\t "password": "'+result.password+'"\n\t}\n}';
-            
+            //'{\n "Config":{\n\t"usuario": "'+result.usuario+'",\n\t "password": "'+result.password+'"\n\t}\n}';
+            var configuracion ='['+
+            '\n\t{'+
+            '\n\t\t"usuario": "usuario1",'+
+            '\n\t\t"pass": "usuario1"'+
+            '\n\t},'
+            '\n\t{'+
+            '\n\t\t"usuario": "usuario2",'+
+            '\n\t\t   "pass": "usuario2"'+
+            '\n\t}'+
+            '['
             
             fs.mkdirSync(path.join(process.cwd(), ".token_heroku"));
             fs.writeFileSync(path.join(process.cwd(),".token_heroku","token.json"),json);

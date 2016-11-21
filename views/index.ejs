@@ -33,31 +33,34 @@
                 <h1> Inicie Sesión</h1> 
                 <p>Para acceder al book, deberá iniciar sesión o acceder como invitado</p>
                 <div class="row">
-                    <form class="col s12">
+                    <form class="col s12" action="/login" method="post">
                       <div class="row">
                         <div class="input-field col s6">
                           <i class="material-icons prefix">account_circle</i>
-                          <input id="icon_prefix" type="text" class="validate">
+                          <input id="icon_prefix" type="text" class="validate" name="username">
                           <label for="icon_prefix">Usuario</label>
                         </div>
                         <div class="input-field col s6">
                           <i class="material-icons prefix">https</i>
-                          <input id="icon_telephone" type="tel" class="validate">
-                          <label for="icon_telephone">Contraseña</label>
+                          <input id="icon_telephone" type="password" class="validate" name="password">
+                          <label for="icon_telephone" >Contraseña</label>
                         </div>
+                      </div>
+                      <div class="row">
+                          <input class="btn waves-effect waves-light #00c853 green accent-4"  type="submit" name="action" value="Iniciar Sesión">
+                          <i class="material-icons right"></i>
+                          </input>
+                          <a class="btn waves-effect waves-light #2196f3 blue" type="submit" name="action" href= "/invitado">Invitado
+                              <i class="material-icons right"></i>
+                          </a>
+                          <a class="btn waves-effect waves-light #f44336 red" type="submit" name="action" href= "">Registro
+                            <i class="material-icons right"></i>
+                          </a>
                       </div>
                     </form>
                   </div>
         
-                <a class="btn waves-effect waves-light #00c853 green accent-4"  type="submit" name="action" href= "/home">Iniciar Sesión
-                    <i class="material-icons right"></i>
-                </a>
-                <a class="btn waves-effect waves-light #2196f3 blue" type="submit" name="action" href= "">Invitado
-                    <i class="material-icons right"></i>
-                </a>
-                <a class="btn waves-effect waves-light #f44336 red" type="submit" name="action" href= "">Registro
-                    <i class="material-icons right"></i>
-                </a>
+                
             </div>
          
         </main>
