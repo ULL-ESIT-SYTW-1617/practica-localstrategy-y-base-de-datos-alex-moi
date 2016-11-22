@@ -20,6 +20,9 @@ var api = Dropbox2.api(config.token_dropbox);
 
 
 
+
+
+
 passport.use(new Strategy(
   function(username,password,cb,err){
     var existe= false;
@@ -41,6 +44,8 @@ passport.use(new Strategy(
             return cb(null,false);
           if(password === body[j].pass)
               return cb(null, username);
+          else
+             return cb(null,false);
               
         
      });
@@ -59,10 +64,6 @@ passport.deserializeUser(function(user, cb) {
 
 
 
-
-
-
-// Configure view engine to render EJS templates.
 app.set('view engine', 'ejs'); 
 app.use(express.static(__dirname + '/public'));
 
@@ -85,16 +86,25 @@ app.use(passport.session());
 
 
 app.get('/login',  (req, res) => {
-  if (req.isAuthenticated()) return res.redirect('/login')
+  if (req.isAuthenticated()) return res.redirect('/error')
   res.render('index')
 })
 
 
 app.post('/login', 
-  passport.authenticate('local', { failureRedirect: '/login' }),
+  passport.authenticate('local', { failureRedirect: '/error' }),
   function(req, res) {
+   
     res.redirect('/home');
   });
+
+app.get('/error',
+  function(req, res) {
+      res.render('error', {error: 'Usuario y contraseña incorrecta'})
+  }
+  
+
+);
 
 app.get('/home', (req,res) =>{
   res.render('home', { user: req.user })
@@ -117,7 +127,7 @@ app.get('/modificacion/password', function(req,res){
   console.log("Contraseñaa!!!!!!!!!!  "+ pass);
   
   api.getFile('/'+config.ruta_dropbox+'.json', (err,response,body) => {
-      
+       
         for(var i=0; i<body.length;i++){
            if(user === body[i].usuario){
               body[i].pass = pass;
@@ -127,10 +137,12 @@ app.get('/modificacion/password', function(req,res){
         contenido= JSON.stringify(body,null,' ');
         console.log(contenido)
      
-      api.removeFile('/'+config.ruta_dropbox+'.json') // Deletes a file.
-     var  dbx = new Dropbox({ accessToken: config.token_dropbox });
-      dbx.filesUpload({path: '/'+config.ruta_dropbox+'.json', contents: contenido});
-      res.redirect('/home')
+      api.removeFile('/'+config.ruta_dropbox+'.json', function(err, response, body){
+      
+        var  dbx = new Dropbox({ accessToken: config.token_dropbox });
+        dbx.filesUpload({path: '/'+config.ruta_dropbox+'.json', contents: contenido});
+        res.redirect('/home')
+      })
     });
   
 
@@ -138,6 +150,13 @@ app.get('/modificacion/password', function(req,res){
 app.get('/respuesta',
   (req, res) => {
     res.redirect('/');
+  });
+
+
+app.get('/salir',
+  (req,res)=>{
+    req.logout();
+    res.redirect('login')
   });
 
 

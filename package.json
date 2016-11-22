@@ -1,6 +1,6 @@
 {
   "name": "gitbook-start-heroku-localstrategy-alex-moi",
-  "version": "0.0.19",
+  "version": "0.0.20",
   "description": "Plugin deploy heroku oauth",
   "main": "gitbook-start-heroku-localstrategy.js",
   "scripts": {
