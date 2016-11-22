@@ -127,7 +127,7 @@ function datos(directorio){
                 if(err) throw err;
                 var datos_dropbox= require(path.resolve(process.cwd(),".datos_dropbox.json"));
                 dbx = new Dropbox({ accessToken: datos_dropbox.token_dropbox });
-                dbx.filesUpload({path: '/'+datos_dropbox.ruta_dropbox, contents: data})
+                dbx.filesUpload({path: '/'+datos_dropbox.ruta_dropbox+'.json', contents: data})
         		.then(function(response){
         		    
         			return response;
