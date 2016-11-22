@@ -7,7 +7,9 @@ var child = require("child_process");
 var fs2 = require('fs-extended');
 var prompt = require("prompt");
 var heroku = require('heroku-client');
-
+var Dropbox = require('dropbox');
+const inquirer = require('inquirer');
+var dbx;
 
 
 
@@ -52,8 +54,14 @@ function initialize(directorio) {
     });
     
     datos(directorio);
+  
     
 };
+
+
+
+  
+
 
 
 
@@ -68,14 +76,11 @@ function datos(directorio){
               name: 'token_app',
               required: true
             },{
-                name: 'repositorio'
+                name: 'token_dropbox',
+                required: true
             },{
-                name: 'usuario',
-                require: true
-            },{
-                name: 'password',
-                require: true
-                
+               name: 'ruta_dropbox',
+               required: true
             }], function (err, result) {
             // 
             // Log the results. 
@@ -83,27 +88,27 @@ function datos(directorio){
             console.log('Sus datos son:');
             console.log('  nombre: ' + result.nombre_app);
             console.log('  token: ' + result.token_app);
-            console.log('  repositorio: ' + result.repositorio);
-            console.log('  usuario: ' + result.usuario);
-            console.log('  password: ' + result.password);
+            console.log('  token_dropbox: ' + result.token_dropbox);
+            console.log('  ruta_dropbox: ' + result.ruta_dropbox);
            
             //variable con el contenido de config.json
             var json = '{\n "Heroku":{\n\t"nombre_app": "'+result.nombre_app+'",\n\t "token_app": "'+result.token_app+'"\n\t}\n}';
-            //'{\n "Config":{\n\t"usuario": "'+result.usuario+'",\n\t "password": "'+result.password+'"\n\t}\n}';
+            var dropb='{\n\t"token_dropbox": "'+result.token_dropbox+'",\n\t "ruta_dropbox": "'+result.ruta_dropbox+'"\n}';
             var configuracion ='['+
             '\n\t{'+
             '\n\t\t"usuario": "usuario1",'+
             '\n\t\t"pass": "usuario1"'+
-            '\n\t},'
+            '\n\t},'+
             '\n\t{'+
             '\n\t\t"usuario": "usuario2",'+
             '\n\t\t   "pass": "usuario2"'+
             '\n\t}'+
-            '['
+            '\n]'
             
             fs.mkdirSync(path.join(process.cwd(), ".token_heroku"));
             fs.writeFileSync(path.join(process.cwd(),".token_heroku","token.json"),json);
-            fs.writeFileSync(path.join(process.cwd(),"aplicacion.json"),configuracion);
+            fs.writeFileSync(path.join(process.cwd(),"usuarios.json"),configuracion);
+            fs.writeFileSync(path.join(process.cwd(),".datos_dropbox.json"),dropb);
             
             var token = require(path.join(process.cwd(), ".token_heroku","token.json"));
             var pack= require(path.join(process.cwd(), 'package.json'));
@@ -117,8 +122,26 @@ function datos(directorio){
                       
                       
                 });
-
+                
+            fs.readFile(path.join(process.cwd(),'usuarios.json'), (err, data) => {
+                if(err) throw err;
+                var datos_dropbox= require(path.resolve(process.cwd(),".datos_dropbox.json"));
+                dbx = new Dropbox({ accessToken: datos_dropbox.token_dropbox });
+                dbx.filesUpload({path: '/'+datos_dropbox.ruta_dropbox, contents: data})
+        		.then(function(response){
+        		    
+        			return response;
+        		})
+        		.catch(function(err){
+        			console.log("No se ha subido correctamente la bd al dropbox. Error:"+err);
+        			throw err;
+        		})
+            });
           });
+          
+         
+
+    
           
 }
 

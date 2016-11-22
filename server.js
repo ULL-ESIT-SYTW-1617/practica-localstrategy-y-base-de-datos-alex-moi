@@ -10,9 +10,22 @@ var bodyParser = require('body-parser');
 var session = require('express-session');
 var loginin = require('connect-ensure-login').ensureLoggedIn;
 
+var Dropbox = require('dropbox');
+var bcrypt = require("bcrypt-nodejs")
 
 
-var usuarios = require(path.resolve(process.cwd(),"aplicacion.json"));
+var usuarios = require(path.resolve(process.cwd(),"usuarios.json"));
+var config = require(path.resolve(process.cwd(),".datos_drobox.json"));
+
+
+var dbx = new Dropbox({ accessToken: config.token_dropbox});
+dbx.filesListFolder({path: '/'+config.ruta_dropbox})
+  .then(function(response) {
+    console.log(response);
+  })
+  .catch(function(error) {
+    console.log(error);
+  });
 
 
 passport.use(new Strategy(
@@ -92,7 +105,11 @@ app.get('/modificacion', (req,res) =>{
   res.render('modificacion')
 })
 
-
+app.get('/modificacion/password', function(req,res)
+{
+ 
+   
+});
 app.get('/respuesta',
   (req, res) => {
     res.redirect('/');

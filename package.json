@@ -1,6 +1,6 @@
 {
   "name": "gitbook-start-heroku-localstrategy-alex-moi",
-  "version": "0.0.4",
+  "version": "0.0.17",
   "description": "Plugin deploy heroku oauth",
   "main": "gitbook-start-heroku-localstrategy.js",
   "scripts": {
@@ -39,6 +39,7 @@
     "body-parser": "^1.15.2",
     "connect-ensure-login": "^0.1.1",
     "cookie-parser": "^1.4.3",
+    "dropbox": "^2.4.0",
     "ejs": "^2.5.2",
     "express": "^4.14.0",
     "express-session": "^1.14.2",
@@ -50,6 +51,7 @@
     "gulp": "^3.9.1",
     "gulp-shell": "^0.5.2",
     "heroku-client": "^3.0.0-beta3",
+    "inquirer": "^1.2.3",
     "materialize-css": "^0.97.8",
     "minimist": "^1.2.0",
     "morgan": "^1.7.0",
