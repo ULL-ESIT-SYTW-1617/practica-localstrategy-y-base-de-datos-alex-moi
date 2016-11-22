@@ -20,6 +20,28 @@ var api = Dropbox2.api(config.token_dropbox);
 
 
 
+/*
+passport.use(new Strategy(
+  function(username,password,cb,err){
+    var existe= false;
+    var j;
+    for(var i=0; i<usuarios.length;i++){
+       if(username === usuarios[i].usuario){
+         existe = true;
+         console.log(existe);
+         j = i;
+         console.log(i)
+       }
+     }
+     
+    if(!existe)
+      return cb(null,false);
+    if(password === usuarios[j].pass)
+        return cb(null, username);
+        
+    
+  }));
+*/
 
 
 
@@ -64,6 +86,10 @@ passport.deserializeUser(function(user, cb) {
 
 
 
+
+
+
+// Configure view engine to render EJS templates.
 app.set('view engine', 'ejs'); 
 app.use(express.static(__dirname + '/public'));
 
