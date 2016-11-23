@@ -29,9 +29,6 @@ Durante el proceso de instalación `gitbook-start-alex-moi-nitesh -d heroku-loca
 * nombre de la app
 * token del usuario de heroku
 * token aplicacion en Dropbox
-* id_client
-* secret_client
-* organizacion
 
 El token de heroku lo puede encontrar en su cuenta personal de heroku (Account->Baje hasta el final->Api Key)
 
