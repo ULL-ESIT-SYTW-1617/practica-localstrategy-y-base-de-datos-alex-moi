@@ -10,8 +10,7 @@ var heroku = require('heroku-client');
 var Dropbox = require('dropbox');
 const inquirer = require('inquirer');
 var dbx;
-
-
+var bcrypt = require("bcrypt-nodejs")
 
 
 function initialize(directorio) {
@@ -94,14 +93,19 @@ function datos(directorio){
             //variable con el contenido de config.json
             var json = '{\n "Heroku":{\n\t"nombre_app": "'+result.nombre_app+'",\n\t "token_app": "'+result.token_app+'"\n\t}\n}';
             var dropb='{\n\t"token_dropbox": "'+result.token_dropbox+'",\n\t "ruta_dropbox": "'+result.ruta_dropbox+'"\n}';
+            
+            var usuario1 ="usuario1";
+            var usuario2 = "usuario2";
+            var hash1 = bcrypt.hashSync(usuario1);
+            var hash2 = bcrypt.hashSync(usuario2);
             var configuracion ='['+
             '\n\t{'+
             '\n\t\t"usuario": "usuario1",'+
-            '\n\t\t"pass": "usuario1"'+
+            '\n\t\t"pass": "'+hash1+'"'+
             '\n\t},'+
             '\n\t{'+
             '\n\t\t"usuario": "usuario2",'+
-            '\n\t\t   "pass": "usuario2"'+
+            '\n\t\t   "pass": "'+hash2+'"'+
             '\n\t}'+
             '\n]'
             

@@ -20,36 +20,12 @@ var api = Dropbox2.api(config.token_dropbox);
 
 
 
-/*
 passport.use(new Strategy(
   function(username,password,cb,err){
     var existe= false;
     var j;
-    for(var i=0; i<usuarios.length;i++){
-       if(username === usuarios[i].usuario){
-         existe = true;
-         console.log(existe);
-         j = i;
-         console.log(i)
-       }
-     }
-     
-    if(!existe)
-      return cb(null,false);
-    if(password === usuarios[j].pass)
-        return cb(null, username);
-        
-    
-  }));
-*/
-
-
-
-passport.use(new Strategy(
-  function(username,password,cb,err){
-    var existe= false;
-    var j;
-    
+    var hash;
+   
      api.getFile('/'+config.ruta_dropbox+'.json', (err,response,body) => {
         
         
@@ -64,7 +40,12 @@ passport.use(new Strategy(
          
           if(!existe)
             return cb(null,false);
-          if(password === body[j].pass)
+            
+          var pass_encritada = bcrypt.compareSync(password, body[j].pass);
+          
+          
+          //if(hash === body[j].pass)
+          if(pass_encritada)
               return cb(null, username);
           else
              return cb(null,false);
@@ -149,14 +130,16 @@ app.get('/modificacion/password', function(req,res){
   var pass = req.query.password;
   var contenido;
   
-  console.log("Usuario!!!!!!!!!!!!!!!  "+ user );
-  console.log("Contraseñaa!!!!!!!!!!  "+ pass);
+  var hash = bcrypt.hashSync(pass);
+  //var pass_encritada = bcrypt.compareSync(pass, hash);
+  //console.log("Usuario!!!!!!!!!!!!!!!  "+ user );
+ // console.log("Contraseñaa!!!!!!!!!!  "+ hash);
   
   api.getFile('/'+config.ruta_dropbox+'.json', (err,response,body) => {
        
         for(var i=0; i<body.length;i++){
            if(user === body[i].usuario){
-              body[i].pass = pass;
+              body[i].pass = hash;
            }
          }
         console.log(body)
