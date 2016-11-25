@@ -1,8 +1,8 @@
 {
-  "name": "gitbook-start-heroku-bbdd-alex-moi",
+  "name": "gitbook-start-iaas-bbdd-alex-moi",
   "version": "0.0.0",
-  "description": "Plugin deploy heroku oauth",
-  "main": "gitbook-start-heroku-bbdd.js",
+  "description": "Plugin deploy iaas oauth",
+  "main": "gitbook-start-iaas-bbdd.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -32,7 +32,7 @@
     "url": "https://github.com/ULL-ESIT-SYTW-1617/practica-localstrategy-y-base-de-datos-alex-moi.git/issues"
   },
   "bin": {
-    "gitbook-start-heroku-localstrategy": "./gitbook-start-heroku-bbdd.js"
+    "gitbook-start-iaas-bbdd": "./gitbook-start-iaas-bbdd.js"
   },
   "homepage": "https://github.com/ULL-ESIT-SYTW-1617/practica-localstrategy-y-base-de-datos-alex-moi.git#readme",
   "dependencies": {
@@ -50,7 +50,6 @@
     "gitbook-cli": "^2.3.0",
     "gulp": "^3.9.1",
     "gulp-shell": "^0.5.2",
-    "heroku-client": "^3.0.0-beta3",
     "inquirer": "^1.2.3",
     "materialize-css": "^0.97.8",
     "minimist": "^1.2.0",
