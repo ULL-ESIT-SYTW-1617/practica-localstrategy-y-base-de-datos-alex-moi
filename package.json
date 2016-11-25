@@ -1,15 +1,15 @@
 {
-  "name": "gitbook-start-heroku-localstrategy-alex-moi",
-  "version": "0.0.24",
+  "name": "gitbook-start-heroku-bbdd-alex-moi",
+  "version": "0.0.0",
   "description": "Plugin deploy heroku oauth",
-  "main": "gitbook-start-heroku-localstrategy.js",
+  "main": "gitbook-start-heroku-bbdd.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/ULL-ESIT-SYTW-1617/passport-y-localstrategy-alex-moi.git",
-    "wiki": "https://github.com/ULL-ESIT-SYTW-1617/passport-y-localstrategy-alex-moi.wiki.git"
+    "url": "https://github.com/ULL-ESIT-SYTW-1617/practica-localstrategy-y-base-de-datos-alex-moi.git",
+    "wiki": "https://github.com/ULL-ESIT-SYTW-1617/practica-localstrategy-y-base-de-datos-alex-moi.wiki.git"
   },
   "keywords": [
     "gitbook",
@@ -29,12 +29,12 @@
   ],
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/ULL-ESIT-SYTW-1617/autenticacion-oauth-con-passport-alex-moi.git/issues"
+    "url": "https://github.com/ULL-ESIT-SYTW-1617/practica-localstrategy-y-base-de-datos-alex-moi.git/issues"
   },
   "bin": {
-    "gitbook-start-heroku-localstrategy": "./gitbook-start-heroku-localstrategy.js"
+    "gitbook-start-heroku-localstrategy": "./gitbook-start-heroku-bbdd.js"
   },
-  "homepage": "https://github.com/ULL-ESIT-SYTW-1617/passport-y-localstrategy-alex-moi.git#readme",
+  "homepage": "https://github.com/ULL-ESIT-SYTW-1617/practica-localstrategy-y-base-de-datos-alex-moi.git#readme",
   "dependencies": {
     "body-parser": "^1.15.2",
     "connect-ensure-login": "^0.1.1",
