@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <!--Importa los iconos-->
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+        <!--Css de materialize-->
+        <link type="text/css" rel="stylesheet" href="assets/materialize/css/materialize.min.css"  media="screen,projection"/>
+        <link type="text/css" rel="stylesheet" href="assets/materialize/css/login/login.css">
+                
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    </head>
+    <body class="#f5f5f5 grey lighten-3">
+        <nav>
+            <div class="nav-wrapper #b3e5fc light-blue lighten-4">
+                <img class="responsive-img brand-logo center" src="images/Proyecto2.png">
+                <!--<a href="/indice" class="brand-logo center black-text">NotePro</a>-->
+                <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
+                <ul id="nav-mobile" class="left hide-on-med-and-down">
+                    <li><a  href="/">Inicio</a></li>
+                    <li><a href="/signup">Registrarse</a></li>
+                    <li class="active"><a href="/login">Sesión</a></li>
+                </ul>
+                <ul class="side-nav #b3e5fc light-blue lighten-4" id="mobile-demo">
+                    <li><a  href="/">Inicio</a></li>
+                    <li><a href="/signup">Registrarse</a></li>
+                    <li class="active"><a href="/login">Sesión</a></li>
+                </ul>
+            </div>
+        </nav>  
+      
+      
+      
+      
+      
+      <div class="container">
+          <div class="row">
+              <div class="col m7 offset-m3">
+                  <div class="row">
+                      <div class="col s12 m12">
+                          <h2> <i class="medium material-icons">input</i>Registro</h2>
+                      </div>
+                  </div>
+                 
+    
+                  <div class="row">
+                        <form class="col s12" action="/signup" method="post" onsubmit="return validacion_signup()">
+                            <div class="row">
+                                <div class="input-field col s12 m12">
+                                    <input class="form-control" id="nombre1" type="text" class="validate" name="nombre1">
+                                    <label for="nombre1">Nombre</label>
+                                </div>
+                            </div>
+                             <div class="row">
+                                <div class="input-field col s12 m12">
+                                    <input class="form-control" id="username1" type="text" class="validate" name="username1">
+                                    <label for="username1">Nombre de usuario</label>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="input-field col s12 m12">
+                                    <input class="form-control" id="edad1" type="number" min="18" class="validate" name="edad">
+                                    <label for="edad">Edad</label>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="input-field col s12 m12">
+                                    <input class="form-control" id="email1" type="email" class="validate" name="email">
+                                    <label for="email">Email</label>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="input-field col s12 m12">
+                                    <input id="password1" class="form-control" type="password" class="validate" name="password">
+                                    <label for="password">Contraseña</label>
+                                </div>
+                            </div>
+                            
+                            <div class="row">
+                                <div class="col m3 s12">
+                                    <button class="btn waves-effect waves-light black-text #b3e5fc light-blue lighten-4" type="submit" >Aceptar</div>
+                                
+                                <div class="col m6 s12">
+                                    <a href="/auth/google" class="waves-effect waves-light btn #f44336 red"><span class="fa fa-google-plus"></span> Google+</a>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <p>¿Ya tiene una cuenta? <a href="/login">Accede</a></p>
+                                <p>O ir a <a href="/">Inicio</a>.</p>
+                            </div>
+                        </form>
+                  </div>
+              </div>              
+          </div>
+       
+      </div>
+      
+      
+      
+    <script src="http://code.jquery.com/jquery.min.js"></script>
+    <script type="text/javascript" scr="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+    <script type="text/javascript" src="assets/materialize/js/materialize.min.js"></script>
+    <script src="mate.js"></script>
+    </body>
+</html>
