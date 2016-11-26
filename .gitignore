@@ -1,5 +1,6 @@
 node_modules/
 .index.js.swp
 wiki/
+data/
 _book
 .gitbook-start

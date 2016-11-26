@@ -121,18 +121,30 @@ const User  = require('./models/user');
 	});
 
 
-	app.get('/modificacion/password', function(req, res) {
+	app.get('/modificacion/password', function(req, res, next) {
 		
-		User.find({email: req.query.email},(err,file)=>{
 
-			User.update({email: req.query.email},{$set: {password: req.query.pass}},function(err, datos) {
-			    if(err) throw err;
-			    res.json(datos)
-			    res.redirect('/profile');
-			});
+		console.log("email: " +req.query.email)
+		
+		User.findOne(req.params.email, function(err, user) {
 
-		    //res.redirect('/profile');
-		 })
+            if (err)
+                return(err);
+			
+			var bcrypt   = require('bcrypt-nodejs');
+			user.local.password = bcrypt.hashSync(req.query.pass, bcrypt.genSaltSync(8), null);
+            //user.local.password = req.query.pass;  
+
+            // save user
+            user.save(function(err) {
+                if (err)
+                    return(err);
+
+                res.redirect('/home')
+            });
+
+        });
+
 	});
 	
 

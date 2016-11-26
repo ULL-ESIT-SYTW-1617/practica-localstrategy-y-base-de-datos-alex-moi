@@ -15,7 +15,7 @@ var session       = require('express-session');
 var loginin       = require('connect-ensure-login').ensureLoggedIn;
 
 
-
+mongoose.Promise = global.Promise;
 mongoose.connect('mongodb://localhost/iaas');
 
 
