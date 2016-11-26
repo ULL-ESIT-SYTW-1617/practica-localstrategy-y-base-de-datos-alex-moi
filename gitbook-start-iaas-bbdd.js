@@ -67,13 +67,13 @@ function initialize(directorio) {
         //creamos el directorio data/db y le cambiamos los permisos
     	fs.createDir(path.join(process.cwd(), 'data'), function(err){
     	    fs.createDir(path.join(process.cwd(), 'data', 'db'), function(err){
-                child.exec("chown 'id -u' /data/db/", function(error, stdout, stderr){
+                /*child.exec("chown 'id -u' /data/db/", function(error, stdout, stderr){
                     if(error)
                       console.log(error)
                     
                     console.log(stderr);
                     console.log(stdout);
-                })
+                })*/
     	    });
     	});
         
@@ -91,6 +91,8 @@ function deploy() {
         
         console.log(stderr);
         console.log(stdout);
+        var ip = require("../../../package.json").iaas.IP;
+        console.log('Acceda a https://'+ip+':8080 ')
     })
 
    /* var carpeta = GitUrlParse(url);
