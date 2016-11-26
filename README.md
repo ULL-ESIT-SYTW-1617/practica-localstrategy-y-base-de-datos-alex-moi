@@ -2,17 +2,17 @@
 # Sistemas y Tecnologías Web. Gitbook Start Acceso Restringido Local con Dropbox. Plugins
 
 Este paquete es un plugin del paquete ```gitbook-start-alex-moi-nitesh```.
-Ofrece la posibilidad de desplegar en **heroku** nuestra aplicación a través de la **API de Heroku** y utilizando autenticación **local** utilizando la **API Dropbox**.
+Ofrece la posibilidad de desplegar en **Iaas** nuestra aplicación mediante el uso de nodejs y la base de datos MongoDB que proporciona autenticacion local.
 
 ## Instalación
 
-**Debemos tener** instalado el paquete principal en **global**. Con esto hecho no es necesario instalar el paquete *plugin heroku* puesto que al ejecutar la aplicación de la forma que se expone a continuación, ésta lo instala por nosotros.
+**Debemos tener** instalado el paquete principal en **global**. Con esto hecho no es necesario instalar el paquete *plugin iaas-bbdd* puesto que al ejecutar la aplicación de la forma que se expone a continuación, ésta lo instala por nosotros.
 Por tanto, ejecutamos desde el directorio de nuestro gitbook:
 ```shell
-gitbook-start-alex-moi-nitesh -d heroku-localstrategy
+gitbook-start-alex-moi-nitesh -d iaas-bbdd --iaas_ip <ip_maquina> --iaas_path </home/usuario/ruta>
 ```
 
-Para más información sobre las opciones que permite el paquete principal, acuda a su documentación en [gitbook-start-alex-moi-nitesh](https://github.com/ULL-ESIT-SYTW-1617/nueva-funcionalidad-para-el-paquete-npm-plugins-alex-moi).
+Es importante que no ponga '/' al final de la ruta y en nombre_usuario el usuario de su maquina (generalmente usuario)
 
 ## Descripción del paquete
 
