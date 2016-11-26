@@ -88,7 +88,7 @@ nav ul a { /*tamaño letras iniciar sesion*/
     margin-left: auto;
     margin-right: auto;
 
-    height: 400px;
+    height: 330px;
     width: 700px;
     text-align: center;
     
@@ -107,7 +107,7 @@ nav ul a { /*tamaño letras iniciar sesion*/
     }
     
     .contenedor2{
-        height: 450px;
+        height: 380px;
         width: 500px; 
     }
 }
@@ -118,6 +118,13 @@ h1 {
     line-height: 110%;
     margin: 2.1rem 0 1.68rem 0;
     padding-top: 5px;
+}
+
+
+h4 {
+  font-size: 2.28rem;
+  line-height: 110%;
+  margin: 2.30rem 0 0.912rem 0;
 }
 
 p{

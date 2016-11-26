@@ -7,7 +7,7 @@ var child = require("child_process");
 
 
 function initialize(directorio) {
-    console.log("\n============ INSTALANDO DEPENDENCIAS GITBOOK-START-IAAS-ULL-ES ============")
+    console.log("\n============ INSTALANDO DEPENDENCIAS GITBOOK-START-IAAS-BBDD ============")
     console.log("\nEspere mientras el proceso termina ...")
 
 
@@ -83,51 +83,18 @@ function initialize(directorio) {
 
 function deploy() {
 
-    
-
     child.exec('node app.js', function(error, stdout, stderr){
         if(error)
           console.log(error)
         
         console.log(stderr);
         console.log(stdout);
-        var ip = require("../../../package.json").iaas.IP;
-        console.log('Acceda a https://'+ip+':8080 ')
+        //var ip = require(path.join(process.cwd(), "../../../package.json")).iaas.IP;
+        //console.log('Acceda a https://'+ip+':8080 ')
     })
 
-   /* var carpeta = GitUrlParse(url);
-
-    console.log("Comenzando el deploy en Iaas");
-    console.log('Direccion IP Destino: '+ip);
-    console.log('Ruta de destino: '+ruta+'/'+carpeta.name);
-    console.log('Repositorio origen: '+url);
-  
-
-    exec('cd '+ruta+';git clone '+url+'',{
-          user: 'usuario',
-          host: ip,
-          key: 'fs.readFileSync(`${process.env.HOME}/.ssh/id_rsa`)'
-    
-      },function(err){
-       if(err){
-      	console.log('Haciendo pull del repositorio!');
-        exec('cd '+ruta+'/'+carpeta.name+'; git pull',{
-            user: 'usuario',
-            host: ip,
-            key: 'fs.readFileSync(`${process.env.HOME}/.ssh/id_rsa`)'
-          },function(err){ 
-            if(err)
-                console.log("Ha habido un error con el pull");
-            else
-                console.log("Actualizacion carpeta confirmada");
-            });
-        }
-        else {
-            console.log("Clonación del repositorio confirmada");
-        }
-    });*/
-    
 };
+
 
 module.exports = {
   initialize,

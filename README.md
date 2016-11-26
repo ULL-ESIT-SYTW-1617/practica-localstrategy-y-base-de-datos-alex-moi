@@ -1,56 +1,40 @@
 
-# Sistemas y Tecnologías Web. Gitbook Start Acceso Restringido Local con Dropbox. Plugins
+# Sistemas y Tecnologías Web. Gitbook Start LocalStrategy y MongoDB. Plugin
 
 Este paquete es un plugin del paquete ```gitbook-start-alex-moi-nitesh```.
-Ofrece la posibilidad de desplegar en **Iaas** nuestra aplicación mediante el uso de nodejs y la base de datos MongoDB que proporciona autenticacion local.
+Ofrece la posibilidad de desplegar una aplicación basada en autenticación local mediante el uso de passport y MongoDB, la aplicación tiene como objetivo contener un gitbook al cual solo podrán acceder aquellos usuarios que estén registrados en la misma.
 
 ## Instalación
 
-**Debemos tener** instalado el paquete principal en **global**. Con esto hecho no es necesario instalar el paquete *plugin iaas-bbdd* puesto que al ejecutar la aplicación de la forma que se expone a continuación, ésta lo instala por nosotros.
-Por tanto, ejecutamos desde el directorio de nuestro gitbook:
-```shell
-gitbook-start-alex-moi-nitesh -d iaas-bbdd --iaas_ip <ip_maquina> --iaas_path </home/usuario/ruta>
-```
+**Debemos tener** instalado el paquete principal en **global** y creada la estructura de directorios(opción **-c** [paquete principal](https://www.npmjs.com/package/gitbook-start-alex-moi-nitesh)). Con esto hecho **NO** es necesario instalar el paquete *plugin iaas-bbdd* puesto que al ejecutar la aplicación de la forma que se expone a continuación, ésta lo instala por nosotros.
 
-Es importante que no ponga '/' al final de la ruta y en nombre_usuario el usuario de su maquina (generalmente usuario)
+Para poner en funcionamiento este paquete vaya a la sección de ejecución donde se explican los pasos.
+
 
 ## Descripción del paquete
 
-El paquete cuenta con dos métodos, **intialize()** y **deploy()**. El primero, al ser invocado por el paquete principal [gitbook-start-alex-moi-nitesh](https://www.npmjs.com/package/gitbook-start-alex-moi-nitesh) añadirá una tarea gulp al gulpfile.js de la aplicación. Esta tarea se llamará **deploy-heroku-oauth** e invocará el método **deploy()** que se encargará de desplegar la aplicación en **heroku**.
+El paquete cuenta con dos métodos, **intialize()** y **deploy()**. El primero, al ser invocado por el paquete principal [gitbook-start-alex-moi-nitesh](https://www.npmjs.com/package/gitbook-start-alex-moi-nitesh) el cual añadirá una tarea gulp al gulpfile.js de la aplicación. Esta tarea se llamará **deploy-iaas-bbdd** e invocará el método **deploy()** que se encargará de arrancar el server en la maquina del iaas.
 
-## Recomendación
 
-Es recomendable que utilice el paquete [github](https://www.npmjs.com/package/gitbook-start-github-alex-moi) para que le cree toda la estructura completa del Gitbook.
 
-O bien, ejecute **gulp build** para contruir el book.
+##Ejecución
 
-## Funcionamiento
-Después de haber ejecutado el comando del paso de **Instalación**, se instalará el paquete **gitbook-start-heroku-localstrategy-alex-moi** automaticamente y ya podremos desplegar en heroku.
-Es recomendable, que previamente haya instalado el paquete **gitbook-start-github-alex-moi** puesto que le creará el repositorio con un book automáticamente. Más información sobre este paquete en este 
-[enlace paquete github-alex-moi](https://www.npmjs.com/package/gitbook-start-github-alex-moi)
+Lo primero será, en nuestra máquina local, instalar el paquete principal en global y seguir los **pasos de ejecución** explicados [aquí](https://www.npmjs.com/package/gitbook-start-alex-moi-nitesh).
 
-##### Datos a tener encuenta
-Durante el proceso de instalación `gitbook-start-alex-moi-nitesh -d heroku-localstrategy` , nos pedirá por pantalla los siguientes datos:
-* nombre de la app
-* token del usuario de heroku
-* token aplicacion en Dropbox
-* ruta dropbox (aquí introduzca simplemente el nombre que desea que se llame el fichero de usuarios, por ejemplo usuario)
+A continuación, ejecutaremos el paquete del iaas-ull-es para subir nuestro Gitbook a la máquina del IaaS.
+//Explicacion de los pasos a seguir para hacer el despliegue en iaas
 
-El token de heroku lo puede encontrar en su cuenta personal de heroku (Account->Baje hasta el final->Api Key)
+Una vez hemos realizado los pasos anteriores, es decir, una vez hemos subido nuestro Gitbook al IaaS tendremos nuestro directorio Gitbook allí. Por tanto, **nos movemos a dicho directorio** y ejecutamos los comandos que se exponen a continuación:
 
-Para obtener el token de la aplicación de Dropbox, acuda a [Api Dropbox](https://www.dropbox.com/developers/apps). Ahí debe de crear una nueva app **Create App** y siga los siguientes pasos:
-1. Elija Dropbox Api
-2. Elija App folder
-3. Introduzca un nombre para su app
-4. Pinche en Generate access token y se le generrá el token 
+ 1. npm install -g gitbook-start-alex-moi-nitesh
+ 2. npm install
+ 2. gulp build
+ 3. gitbook-start-alex-moi-nitesh -d iaas-bbdd
+ 4. Desde el mismo terminal ejecutar: mongod (véase sección Observaciones)
+ 5. Desde otro terminal: gulp deploy-iaas-bbdd
 
-En dropbox tendremos un fichero json con el nombre que haya introducido. En él habrán dos usuarios, **usuario1** y **usuario2**. Las contraseñas son las mismas que su nombre **usuario1** y **usuario2**.
-
-Posteriormente siga los siguientes pasos:
-	
-1. `heroku git:remote -a <nombre_app>`
-2. `gulp deploy-heroku-local`
-3. Acuda a la url de la aplicación: `https://nombre_app.herokuapp.com/`
+#####**Observaciones:** 
+>- Debe tener instalado la base de datos mongoDB en su maquina, en caso contrario siga [estos pasos](http://www.mongodbspain.com/es/2014/08/30/install-mongodb-on-ubuntu-14-04/) (Sólo será necesario realizar los 4 primeros pasos).
 
 
 ##Versiones de los paquetes
