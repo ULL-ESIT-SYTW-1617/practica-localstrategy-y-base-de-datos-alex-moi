@@ -56,10 +56,12 @@ Una vez hemos realizado los pasos anteriores, es decir, una vez hemos subido nue
 
  1. npm install -g gitbook-start-alex-moi-nitesh
  2. npm install
- 2. gulp build
- 3. gitbook-start-alex-moi-nitesh -d iaas-bbdd
- 4. Desde el mismo terminal ejecutar: mongod (véase sección Observaciones)
- 5. Desde otro terminal: gulp deploy-iaas-bbdd
+ 3. gulp build
+ 4. gitbook-start-alex-moi-nitesh -d iaas-bbdd
+ 5. sudo mkdir -p /data/db/
+ 6. sudo chown `id -u` /data/db
+ 7. Desde el mismo terminal ejecutar: mongod --dbpath /data/db --smallfiles (véase sección Observaciones)
+ 8. Desde otro terminal: gulp deploy-iaas-bbdd
 
 #####**Observaciones:** 
 >- Debe tener instalado la base de datos mongoDB en su maquina, en caso contrario siga [estos pasos](http://www.mongodbspain.com/es/2014/08/30/install-mongodb-on-ubuntu-14-04/) (Sólo será necesario realizar los 4 primeros pasos).
