@@ -59,7 +59,7 @@ Una vez hemos realizado los pasos anteriores, es decir, una vez hemos subido nue
  3. gulp build
  4. gitbook-start-alex-moi-nitesh -d iaas-bbdd
  5. sudo mkdir -p /data/db/
- 6. sudo chown `id -u` /data/db
+ 6. sudo chown 'id -u' /data/db
  7. Desde el mismo terminal ejecutar: mongod --dbpath /data/db --smallfiles (véase sección Observaciones)
  8. Desde otro terminal: gulp deploy-iaas-bbdd
 
