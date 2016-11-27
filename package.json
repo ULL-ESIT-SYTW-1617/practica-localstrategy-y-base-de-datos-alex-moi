@@ -1,6 +1,6 @@
 {
   "name": "gitbook-start-iaas-bbdd-alex-moi",
-  "version": "0.0.11",
+  "version": "0.0.12",
   "description": "Plugin deploy iaas bbdd",
   "main": "gitbook-start-iaas-bbdd.js",
   "scripts": {
