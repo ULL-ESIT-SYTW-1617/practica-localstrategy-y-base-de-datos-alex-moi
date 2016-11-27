@@ -1,8 +1,6 @@
 
-var exec = require("ssh-exec");
 var fs = require('fs');
 var path = require('path');
-const GitUrlParse = require("git-url-parse");
 var child = require("child_process");
 
 
@@ -74,8 +72,6 @@ function deploy() {
         
         console.log(stderr);
         console.log(stdout);
-        //var ip = require(path.join(process.cwd(), "../../../package.json")).iaas.IP;
-        //console.log('Acceda a https://'+ip+':8080 ')
     })
 
 };

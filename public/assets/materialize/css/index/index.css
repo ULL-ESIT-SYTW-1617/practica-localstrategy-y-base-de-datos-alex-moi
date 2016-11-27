@@ -112,6 +112,11 @@ nav ul a { /*tamaño letras iniciar sesion*/
     }
 }
 
+#button{
+    margin-top: -25px;
+}
+
+
 h1 {
     font-size: 3.5rem;
     color: white;
