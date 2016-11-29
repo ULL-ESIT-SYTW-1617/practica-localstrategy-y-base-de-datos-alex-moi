@@ -69,7 +69,7 @@ Una vez hemos realizado los pasos anteriores, es decir, una vez hemos subido nue
 
 ##Versiones de los paquetes
 * Paquete principal **gitbook-start-alex-moi-nitesh** versión **v1.2.63**
-* Paquete **gitbook-start-iaas-bbdd-moi** versión **v0.0.12**
+* Paquete **gitbook-start-iaas-bbdd-moi** versión **v0.0.13**
 
 ## Enlaces importantes
 
