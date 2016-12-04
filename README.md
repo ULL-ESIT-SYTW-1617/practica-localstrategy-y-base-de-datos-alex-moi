@@ -59,7 +59,7 @@ Una vez hemos realizado los pasos anteriores, es decir, una vez hemos subido nue
  3. gulp build
  4. gitbook-start-alex-moi-nitesh -d iaas-bbdd
  5. sudo mkdir -p /data/db/
- 6. sudo chown 'id -u' /data/db
+ 6. sudo chmod 0755 /data/db && chown $USER /data/db
  7. Desde el mismo terminal ejecutar: mongod --dbpath /data/db --smallfiles (véase sección Observaciones)
  8. Desde otro terminal: gulp deploy-iaas-bbdd
 
@@ -69,7 +69,7 @@ Una vez hemos realizado los pasos anteriores, es decir, una vez hemos subido nue
 
 ##Versiones de los paquetes
 * Paquete principal **gitbook-start-alex-moi-nitesh** versión **v1.2.63**
-* Paquete **gitbook-start-iaas-bbdd-moi** versión **v0.0.13**
+* Paquete **gitbook-start-iaas-bbdd-moi** versión **v0.0.14**
 
 ## Enlaces importantes
 
