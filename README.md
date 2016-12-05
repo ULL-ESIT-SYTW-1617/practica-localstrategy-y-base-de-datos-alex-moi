@@ -27,6 +27,8 @@ Host sytw
 Con esto podremos conectarnos sin ningún problema a la máquina.
 También es necesario tener generado en la máquina del iaas las claves para utilizar repositorios Github. Puede encontrar la documentación apropiada [en este link](https://help.github.com/articles/generating-an-ssh-key/).
 
+Introduzca el siguiente comando `ssh-copy-id usuario@direccion-servidor-iaas`
+
 ##Ejecución
 
 Lo primero será, en nuestra máquina local, instalar el paquete principal en global y seguir los **pasos de ejecución** explicados [aquí](https://www.npmjs.com/package/gitbook-start-alex-moi-nitesh).
